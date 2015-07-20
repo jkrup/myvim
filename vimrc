@@ -10,11 +10,14 @@ syntax on
 filetype plugin indent on
 
 
-" Pretty stuff
+"" Pretty stuff
 set background=dark
 colorscheme desert
+highlight clear SignColumn " Make gutter invisible
 
-" mappings {
+"" mappings {
+inoremap <C-E> <End>
+inoremap <C-A> <Home>
 nnoremap ; :
 let mapleader=","
 nnoremap <S-space> <C-y>
@@ -37,23 +40,23 @@ nmap <silent> ,/ :nohlsearch<CR>
 "map <leader>F :FufFile<CR>
 "map <leader>f :FufTaggedFile<CR>
 "map <leader>s :FufTag<CR>
-" }
+"" }
 
 
-" Vim Behaviours {
+"" Vim Behaviours {
 set hidden          "hides buffers instead of closing (forcing save)
 "set whichwrap=b,s,h,l,<,>,~,[,] " everything wraps
 set nowrap          " don't wrap lines
 set expandtab
 set tabstop=4       " a tab is four spaces
 set backspace=indent,eol,start
-" allow backspacing over everything in insert mode
+"" allow backspacing over everything in insert mode
 set autoindent      " always set autoindenting on
 set copyindent      " copy the previous indentation on autoindenting
 set nu              " always show line numbers
 set shiftwidth=2    " number of spaces to use for autoindenting
 set shiftround      " use multiple of shiftwidth when indenting with '<' and '>'
-"set showmatch       " show matching parenthesis
+""set showmatch       " show matching parenthesis
 set ignorecase      " ignore case when searching
 set smartcase       " ignore case if searchpattern is all lowercase, case-sensitive otherwise
 set smarttab        " insert tabs on the start of a line according to shiftwidth, not tabstop
@@ -70,25 +73,25 @@ set wildignore=*.swp
 set title           " change the terminal's title
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:. " show tabs and trailing
-set lisp            "autocomplete hyphens
-"set makeprg=rake " set make to rake
+set iskeyword+=\- "autocomplete hyphens
+""set makeprg=rake " set make to rake
 
-"autocmd BufEnter * :syntax sync fromstart
-"autocmd BufReadPost,BufNewFile *_spec.rb set syntax=rspec
-"autocmd BufReadPost,BufNewFile *_spec.rb setlocal commentstring=#\ %s
+""autocmd BufEnter * :syntax sync fromstart
+""autocmd BufReadPost,BufNewFile *_spec.rb set syntax=rspec
+""autocmd BufReadPost,BufNewFile *_spec.rb setlocal commentstring=#\ %s
 
-"au BufWinLeave * silent! mkview
-"au BufWinEnter * silent! loadview
-"au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
-" }
+""au BufWinLeave * silent! mkview
+""au BufWinEnter * silent! loadview
+""au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
+"" }
 
-"Airline
+""Airline
 set laststatus=2
 
-"improve autocomplete menu color
+""improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
 
-" Toggle the cursor column when typing <leader>v
+"" Toggle the cursor column when typing <leader>v
 function! ToggleCursorColumn()
   if &cursorcolumn
     set nocursorcolumn
