@@ -27,6 +27,7 @@ map <left> <esc><C-w>h
 map <up> <esc><C-w>k
 map <right> <esc><C-w>l
 map <down> <esc><C-w>j
+nmap <silent> <leader>a ggVG"+y<CR>
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
@@ -99,3 +100,20 @@ function! ToggleCursorColumn()
     set cursorcolumn
   endif
 endfunction
+
+function! s:goyo_enter()
+  silent !tmux set status off
+  "set noshowmode
+  "set noshowcmd
+  "set scrolloff=999
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  "set showmode
+  "set showcmd
+  "set scrolloff=5
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
