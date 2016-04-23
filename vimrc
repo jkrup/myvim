@@ -9,11 +9,14 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+"" Disable gitgutter by default
+let g:gitgutter_enabled = 0
 
 "" Pretty stuff
 set background=dark
 colorscheme desert
 highlight clear SignColumn " Make gutter invisible
+colorscheme jellybeans
 
 "" mappings {
 inoremap <C-E> <End>
@@ -55,7 +58,7 @@ set backspace=indent,eol,start
 set autoindent      " always set autoindenting on
 set copyindent      " copy the previous indentation on autoindenting
 set nu              " always show line numbers
-set shiftwidth=2    " number of spaces to use for autoindenting
+set shiftwidth=4    " number of spaces to use for autoindenting
 set shiftround      " use multiple of shiftwidth when indenting with '<' and '>'
 ""set showmatch       " show matching parenthesis
 set ignorecase      " ignore case when searching
@@ -76,6 +79,11 @@ set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:. " show tabs and trailing
 set iskeyword+=\- "autocomplete hyphens
 ""set makeprg=rake " set make to rake
+
+let php_folding=2
+syntax enable
+
+set foldlevelstart=4
 
 ""autocmd BufEnter * :syntax sync fromstart
 ""autocmd BufReadPost,BufNewFile *_spec.rb set syntax=rspec
